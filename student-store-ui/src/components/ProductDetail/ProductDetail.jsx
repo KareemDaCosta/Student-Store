@@ -1,18 +1,43 @@
 import * as React from "react"
 import { useParams } from "react-router-dom"
 import "./ProductDetail.css"
+import NotFound from "../NotFound/NotFound"
+import ProductView from "../ProductView/ProductView"
 
-export default function ProductDetail({ products, onClick}) {
+import axios from 'axios';
+const baseUrl = "https://codepath-store-api.herokuapp.com/store";
 
-  const params = useParams();
-  const product = products[params.productId-1];
-  console.log('product: ', product);
-  return (
-    <div className="product-detail">
-      <p>{`Product Details ${product.name}`}</p>
-      <button className={"add-button"} onClick={() => onClick(params.productId)}>
-      <p className="label">Add To Cart</p>
-    </button>
-    </div>
-  )
+
+export default function ProductDetail({ handleAddItemToCart, handleRemoveItemFromCart}) {
+
+    const params = useParams();
+    const [product, setProduct] = React.useState(0); 
+    React.useEffect(async () => {
+        try {
+          const response = await axios.get(`${baseUrl}/${[params.productId]}`);
+          const result = response.data.product;
+          setProduct(result);
+        }
+        catch (e) {
+          console.log(e);
+          setProduct(null);
+        }
+      }, []);
+
+    if(product==0) {
+        return (<h1 className="loading">Loading...</h1>);
+    }
+    else if(product==null) {
+        return (
+            <NotFound />
+        )
+    }
+    return (
+        <div className="product-detail">
+            <p>{`Product Details ${product.name}`}</p>
+            <button className={"add-button"} onClick={() => handleAddItemToCart(params.productId)}>
+                <p className="label">Add To Cart</p>
+            </button>
+        </div>
+    )
 }

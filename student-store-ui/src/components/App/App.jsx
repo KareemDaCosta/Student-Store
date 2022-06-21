@@ -88,14 +88,13 @@ export default function App() {
     return null;
   }
 
-  console.log('products: ', products);
   return (
     <div className="app">
       <BrowserRouter>
         <main>
           <Routes>
             <Route path="/" element={<Home products={products}/>}></Route>
-            <Route path="/product/:productId" element={<ProductDetail products={products} onClick={handleAddItemToCart}/>}></Route>
+            <Route path="/product/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>

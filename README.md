@@ -50,11 +50,11 @@ The following specifications were met on the Express backend and the React front
     - [x] `error` - a variable used to display a message when something goes wrong with the API requests.
     - [x] `isOpen` - a boolean value representing whether or not the `Sidebar.jsx` is in the open or closed state.
     - [x] `shoppingCart` - should store state for the active user's shopping cart (items they want to purchase and the quantity of each item).
-      - [ ] Use whatever data type works best here, but make sure the format the `shoppingCart` as an array before passing it to other components.
-      - [ ] When passed down to other components as a prop, it should formatted as an array of objects.
-      - [ ] Each object in the array should have two fields:
-        - [ ] The `itemId` field should store the `id` of the item being purchased.
-        - [ ] The `quantity` field should store a number representing how many of that item the user is purchasing.
+      - [x] Use whatever data type works best here, but make sure the format the `shoppingCart` as an array before passing it to other components.
+      - [x] When passed down to other components as a prop, it should formatted as an array of objects.
+      - [x] Each object in the array should have two fields:
+        - [x] The `itemId` field should store the `id` of the item being purchased.
+        - [x] The `quantity` field should store a number representing how many of that item the user is purchasing.
     - [x] `checkoutForm` - the user's information that will be sent to the API when they checkout.
   - [x] Leverage the `useEffect` hook to ensure that when the `App.jsx` component is mounted to the screen...
     - [x] It should make a `GET` request to the API's `/store` endpoint with the `axios.get` method.
@@ -77,23 +77,23 @@ The following specifications were met on the Express backend and the React front
         - [x] If it doesn't exist, the function should do nothing.
         - [x] If the new quantity is `0`, it should remove the item from the `shoppingCart`
       - [ ] The **`handleOnCheckoutFormChange`** function. When called...
-        - [ ] It should receive two arguments:
-          - [ ] `name` - the `name` attribute of the input being updated
-          - [ ] `value` - the new value to set for that input
+        - [x] It should receive two arguments:
+          - [x] `name` - the `name` attribute of the input being updated
+          - [x] `value` - the new value to set for that input
         - [ ] It should update the `checkoutForm` object with the new value from the correct input(s)
-      - [ ] The **`handleOnSubmitCheckoutForm`** function. When called...
-        - [ ] It should submit the user's order to the API
-        - [ ] To submit the user's order, it should leverage the `axios.post` method to send a `POST` request to the `/store` endpoint.
-        - [ ] The body of that `POST` request should be an object with two fields:
-          - [ ] The `user` field:
-            - [ ] Should be an object containing `name` and `email` properties
-            - [ ] Each property should be set to the correct value found in the `checkoutForm`
-          - [ ] The `shoppingCart` field:
-            - [ ] Should contain the user's order formatted as an array of objects.
-            - [ ] Each object in the array should have two fields:
-              - [ ] The `itemId` field should store the `id` of the item being purchased.
-              - [ ] The `quantity` field should store a number representing how many of that item the user is purchasing.
-            - [ ] Don't include the `total` price here, since we'll be calculating that on the backend. Remember to never trust the client!
+      - [x] The **`handleOnSubmitCheckoutForm`** function. When called...
+        - [x] It should submit the user's order to the API
+        - [x] To submit the user's order, it should leverage the `axios.post` method to send a `POST` request to the `/store` endpoint.
+        - [x] The body of that `POST` request should be an object with two fields:
+          - [x] The `user` field:
+            - [x] Should be an object containing `name` and `email` properties
+            - [x] Each property should be set to the correct value found in the `checkoutForm`
+          - [x] The `shoppingCart` field:
+            - [x] Should contain the user's order formatted as an array of objects.
+            - [x] Each object in the array should have two fields:
+              - [x] The `itemId` field should store the `id` of the item being purchased.
+              - [x] The `quantity` field should store a number representing how many of that item the user is purchasing.
+            - [x] Don't include the `total` price here, since we'll be calculating that on the backend. Remember to never trust the client!
 
 **Navbar.jsx**
 

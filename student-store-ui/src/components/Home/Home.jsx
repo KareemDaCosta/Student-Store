@@ -1,27 +1,15 @@
 import * as React from "react"
-import axios from 'axios';
-import { Routes, Route, Link } from "react-router-dom"
+
+import ProductGrid from "../ProductGrid/ProductGrid"
+import Hero from "../Hero/Hero"
 import "./Home.css"
 
-export default function Home({ products }) {
+export default function Home({ products, handleAddItemToCart, handleRemoveItemToCart}) {
 
   return (
     <div className="home">
-      <p>Home</p>
-      <div className="Products">
-        {products.map( (item) => (
-          <ProductCard key={item.id}product={item} />
-        ))}
-      </div>
+      <Hero />
+      <ProductGrid products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} />
     </div>
-  )
-}
-
-export function ProductCard( { product } ) {
-  return (
-  <div className="ProductCard">
-    <Link to={`/product/${product.id}`}>{product.name}</Link>
-    
-  </div>
   )
 }

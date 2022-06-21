@@ -1,24 +1,27 @@
 import * as React from "react"
 import axios from 'axios';
-
+import { Routes, Route, Link } from "react-router-dom"
 import "./Home.css"
 
-export default function Home() {
-
-  React.useEffect(async () => {
-    try {
-      const response = await axios.get("https://codepath-store-api.herokuapp.com/store");
-      const result = response.data.products;
-      console.log('result: ', result);
-    }
-    catch (e) {
-      console.log(e);
-    }
-  }, []);
+export default function Home({ products }) {
 
   return (
     <div className="home">
       <p>Home</p>
+      <div className="Products">
+        {products.map( (item) => (
+          <ProductCard key={item.id}product={item} />
+        ))}
+      </div>
     </div>
+  )
+}
+
+export function ProductCard( { product } ) {
+  return (
+  <div className="ProductCard">
+    <Link to={`/product/${product.id}`}>{product.name}</Link>
+    
+  </div>
   )
 }

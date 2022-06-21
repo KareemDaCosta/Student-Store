@@ -36,6 +36,7 @@ export default function App() {
       console.log(e);
       setError(e);
     }
+    setFetching(false);
   }, []);
 
   const handleOnToggle = () => {
@@ -48,22 +49,12 @@ export default function App() {
         let newCart = [...shoppingCart];
         newCart[i].quantity+=1;
         setShoppingCart(newCart);
-        if(products[productId-1].id == productId) {
-          setShoppingPrice(shoppingPrice + products[productId-1].price);
-        }
-        else {
-          console.log("productId assumption failed");
-        }
+        setShoppingPrice(shoppingPrice + products[productId-1].price);
         return;
       }
     }
     setShoppingCart([...shoppingCart, {itemId: productId, quantity: 1}]);
-    if(products[productId-1].id == productId) {
-      setShoppingPrice(shoppingPrice + products[productId-1].price);
-    }
-    else {
-      console.log("productId assumption failed");
-    }
+    setShoppingPrice(shoppingPrice + products[productId-1].price);
   }
 
   const handleRemoveItemFromCart = (productId) => {
@@ -73,23 +64,13 @@ export default function App() {
           let newCart = [...shoppingCart];
           newCart[i].quantity-=1;
           setShoppingCart(newCart);
-          if(products[productId-1].id == productId) {
-            setShoppingPrice(shoppingPrice - products[productId-1].price);
-          }
-          else {
-            console.log("productId assumption failed");
-          }
+          setShoppingPrice(shoppingPrice - products[productId-1].price);
         }
         else {
           let newCart = [...shoppingCart];
           newCart.splice(i, 1);
           setShoppingCart(newCart);
-          if(products[productId-1].id == productId) {
-            setShoppingPrice(shoppingPrice - products[productId-1].price);
-          }
-          else {
-            console.log("productId assumption failed");
-          }
+          setShoppingPrice(shoppingPrice - products[productId-1].price);
         }
       }
     }
@@ -103,20 +84,23 @@ export default function App() {
     axios.post(url, {user: {name: checkoutForm.name, email: checkoutForm.value}, shoppingCart: shoppingCart});
   }
 
+  if(isFetching) {
+    return null;
+  }
 
-
+  console.log('products: ', products);
   return (
     <div className="app">
-      <Navbar />
-      <Sidebar open={isOpen}/>
       <BrowserRouter>
         <main>
           <Routes>
             <Route path="/" element={<Home products={products}/>}></Route>
-            <Route path="/product/:productId" element={<ProductDetail />}></Route>
+            <Route path="/product/:productId" element={<ProductDetail products={products} onClick={handleAddItemToCart}/>}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>
+        <Navbar />
+        <Sidebar open={isOpen}/>
       </BrowserRouter>
     </div>
   )

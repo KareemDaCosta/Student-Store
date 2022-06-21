@@ -11,6 +11,8 @@ import NotFound from "../NotFound/NotFound"
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom"
 
+const url = "https://codepath-store-api.herokuapp.com/store";
+
 
 export default function App() {
   const [products, setProducts] = React.useState([]);
@@ -23,7 +25,7 @@ export default function App() {
 
   React.useEffect(async () => {
     try {
-      const response = await axios.get("https://codepath-store-api.herokuapp.com/store");
+      const response = await axios.get(url);
       const result = response.data.products;
       setProducts(result);
       if(products.length == 0) {
@@ -55,10 +57,7 @@ export default function App() {
         return;
       }
     }
-    var newItem = [];
-    newItem[itemId] = productId;
-    newItem[quantity] = 1;
-    setShoppingCart([...shoppingCart, newItem]);
+    setShoppingCart([...shoppingCart, {itemId: productId, quantity: 1}]);
     if(products[productId-1].id == productId) {
       setShoppingPrice(shoppingPrice + products[productId-1].price);
     }
@@ -95,6 +94,16 @@ export default function App() {
       }
     }
   }
+
+  const handleOnCheckoutFormChange = (name, value) => {
+    //TODO Implement
+  }
+
+  const handleOnSubmitCheckoutForm = () => {
+    axios.post(url, {user: {name: checkoutForm.name, email: checkoutForm.value}, shoppingCart: shoppingCart});
+  }
+
+
 
   return (
     <div className="app">

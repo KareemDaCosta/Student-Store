@@ -4,7 +4,7 @@ import { Routes, Route, Link } from "react-router-dom"
 import "./ProductGrid.css"
 
 
-export default function Hero({products, handleAddItemToCart, handleRemoveItemToCart }) {
+export default function ProductGrid({products, handleAddItemToCart, handleRemoveItemFromCart }) {
     return(
         <div className="Products">
             {products.map( (item) => (
@@ -15,7 +15,6 @@ export default function Hero({products, handleAddItemToCart, handleRemoveItemToC
 }
 
 export function ProductCard( { showDescription, product } ) {
-    console.log('product: ', product);
     return (
     <Link to={`/product/${product.id}`}>
         <div className={`ProductCard ${showDescription ? "showDescription":""}`}>

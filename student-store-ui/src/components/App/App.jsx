@@ -20,6 +20,7 @@ export default function App() {
   const [error, setError] = React.useState("");
   const [isOpen, setOpen] = React.useState(false);
   const [shoppingCart, setShoppingCart] = React.useState([]);
+  console.log(1,'shoppingCart: ', shoppingCart);
   const [checkoutForm, setCheckoutForm] = React.useState("");
   const [shoppingPrice, setShoppingPrice] = React.useState(0);
 
@@ -44,26 +45,32 @@ export default function App() {
   }
 
   const handleAddItemToCart = (productId) => {
+    console.log(5,'shoppingCart: ', shoppingCart);
+    let found = false;
     for(let i = 0; i < shoppingCart.length; i++) {
       if(shoppingCart[i].itemId == productId) {
-        let newCart = [...shoppingCart];
-        newCart[i].quantity+=1;
-        setShoppingCart(newCart);
+        console.log(2,shoppingCart, shoppingCart[i].itemId, productId)
+        shoppingCart[i].quantity++;
         setShoppingPrice(shoppingPrice + products[productId-1].price);
-        return;
+        found = true;
+        break;
       }
     }
-    setShoppingCart([...shoppingCart, {itemId: productId, quantity: 1}]);
-    setShoppingPrice(shoppingPrice + products[productId-1].price);
+    if(!found) {
+      console.log(4,'shoppingCart: ', shoppingCart);
+      setShoppingCart((currentValue) =>
+      {
+        return [...currentValue, {itemId: productId, quantity: 1}]
+      });
+      setShoppingPrice(shoppingPrice + products[productId-1].price);
+    }
   }
 
   const handleRemoveItemFromCart = (productId) => {
     for(let i = 0; i < shoppingCart.length; i++) {
       if(shoppingCart[i].itemId == productId) {
         if(shoppingCart[i].quantity>1) {
-          let newCart = [...shoppingCart];
-          newCart[i].quantity-=1;
-          setShoppingCart(newCart);
+          shoppingCart[i].quantity--;
           setShoppingPrice(shoppingPrice - products[productId-1].price);
         }
         else {
@@ -94,7 +101,7 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home products={products}/>}></Route>
-            <Route path="/product/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} />}></Route>
+            <Route path="/product/:productId" element={<ProductDetail shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>

@@ -1,0 +1,8 @@
+.product-view .product-card .media{
+    width: 500px;
+    height: auto
+}
+
+.product-view .product-card .media a img {
+    max-width: 100%; 
+}

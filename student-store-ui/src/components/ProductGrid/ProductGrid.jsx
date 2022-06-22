@@ -6,7 +6,7 @@ import "./ProductGrid.css"
 
 export default function ProductGrid({setPostStatus, shoppingCart, products, handleAddItemToCart, handleRemoveItemToCart }) {
     return(
-        <div className="Products">
+        <div className="product-grid">
             {products.map( (item) => (
             <ProductCard quantity={shoppingCart.filter( cartItem => (
                 cartItem.itemId==item.id

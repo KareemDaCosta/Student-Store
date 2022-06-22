@@ -1,0 +1,19 @@
+.product-grid {
+    display:grid;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    grid-template-rows: repeat(auto-fit, 1fr);
+}
+
+.product-grid .product-card {
+    grid-gap: 10px;
+    align-self: end;
+}
+
+.product-grid .product-card .media{
+    width: 200px;
+    height: auto
+}
+
+.product-grid .product-card .media a img {
+    max-width: 100%; 
+}

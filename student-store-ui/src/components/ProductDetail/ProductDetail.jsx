@@ -39,7 +39,6 @@ export default function ProductDetail({ shoppingCart, handleAddItemToCart, handl
             break;
         }
     }
-    console.log('shoppingCart: ', shoppingCart);
     return (
         <ProductView product={product} productId={params.productId} quantity={quantity} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} />
     )

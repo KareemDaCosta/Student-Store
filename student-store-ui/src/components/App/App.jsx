@@ -20,7 +20,6 @@ export default function App() {
   const [error, setError] = React.useState("");
   const [isOpen, setOpen] = React.useState(false);
   const [shoppingCart, setShoppingCart] = React.useState([]);
-  console.log(1,'shoppingCart: ', shoppingCart);
   const [checkoutForm, setCheckoutForm] = React.useState("");
   const [shoppingPrice, setShoppingPrice] = React.useState(0);
 
@@ -45,19 +44,18 @@ export default function App() {
   }
 
   const handleAddItemToCart = (productId) => {
-    console.log(5,'shoppingCart: ', shoppingCart);
     let found = false;
     for(let i = 0; i < shoppingCart.length; i++) {
       if(shoppingCart[i].itemId == productId) {
-        console.log(2,shoppingCart, shoppingCart[i].itemId, productId)
-        shoppingCart[i].quantity++;
+        const newArr = [...shoppingCart];
+        newArr[i].quantity++;
+        setShoppingCart(newArr);
         setShoppingPrice(shoppingPrice + products[productId-1].price);
         found = true;
         break;
       }
     }
     if(!found) {
-      console.log(4,'shoppingCart: ', shoppingCart);
       setShoppingCart((currentValue) =>
       {
         return [...currentValue, {itemId: productId, quantity: 1}]
@@ -70,7 +68,9 @@ export default function App() {
     for(let i = 0; i < shoppingCart.length; i++) {
       if(shoppingCart[i].itemId == productId) {
         if(shoppingCart[i].quantity>1) {
-          shoppingCart[i].quantity--;
+          const newArr = [...shoppingCart];
+        newArr[i].quantity--;
+        setShoppingCart(newArr);
           setShoppingPrice(shoppingPrice - products[productId-1].price);
         }
         else {

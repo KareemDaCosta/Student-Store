@@ -20,8 +20,9 @@ export default function App() {
   const [error, setError] = React.useState("");
   const [isOpen, setOpen] = React.useState(false);
   const [shoppingCart, setShoppingCart] = React.useState([]);
-  const [checkoutForm, setCheckoutForm] = React.useState("");
+  const [checkoutForm, setCheckoutForm] = React.useState({name: "", email: ""});
   const [shoppingPrice, setShoppingPrice] = React.useState(0);
+  const [postStatus, setPostStatus] = React.useState(0);
 
   React.useEffect(async () => {
     try {
@@ -83,12 +84,31 @@ export default function App() {
     }
   }
 
-  const handleOnCheckoutFormChange = (name, value) => {
-    //TODO Implement
+  const handleFormSubmitted = () => {
+    setShoppingPrice(0);
+    setShoppingCart([]);
+    setCheckoutForm({name : "", email: ""});
   }
 
-  const handleOnSubmitCheckoutForm = () => {
-    axios.post(url, {user: {name: checkoutForm.name, email: checkoutForm.value}, shoppingCart: shoppingCart});
+  const handleOnCheckoutFormChange = (name, value) => {
+    if(name=="email") {
+      setCheckoutForm({name: checkoutForm.name, email: value});
+    }
+    else {
+      setCheckoutForm({name: value, email: checkoutForm.email});
+    }
+  }
+
+  const handleOnSubmitCheckoutForm = async () => {
+    try {
+      await axios.post(url, {user: {name: checkoutForm.name, email: checkoutForm.email}, shoppingCart: shoppingCart});
+      setPostStatus(1);
+    }
+    catch (error) {
+      setError(error);
+      console.log(error);
+      setPostStatus(-1);
+    }
   }
 
   if(isFetching) {
@@ -100,13 +120,13 @@ export default function App() {
       <BrowserRouter>
         <main>
           <Routes>
-            <Route path="/" element={<Home shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
-            <Route path="/product/:productId" element={<ProductDetail shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
+            <Route path="/" element={<Home setPostStatus={setPostStatus} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
+            <Route path="/product/:productId" element={<ProductDetail setPostStatus={setPostStatus} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>
         <Navbar />
-        <Sidebar shoppingPrice={shoppingPrice} isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
+        <Sidebar handleFormSubmitted={handleFormSubmitted} error={error} postStatus={postStatus} shoppingPrice={shoppingPrice} isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
       </BrowserRouter>
     </div>
   )

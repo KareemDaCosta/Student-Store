@@ -1,0 +1,7 @@
+.open {
+    min-width: 350px;
+}
+
+.closed {
+    max-width: 150px;
+}

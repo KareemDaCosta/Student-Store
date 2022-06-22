@@ -4,12 +4,12 @@ import ProductGrid from "../ProductGrid/ProductGrid"
 import Hero from "../Hero/Hero"
 import "./Home.css"
 
-export default function Home({ shoppingCart, products, handleAddItemToCart, handleRemoveItemToCart}) {
-
+export default function Home({ setPostStatus, shoppingCart, products, handleAddItemToCart, handleRemoveItemToCart}) {
+  
   return (
     <div className="home">
       <Hero />
-      <ProductGrid shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} />
+      <ProductGrid setPostStatus={setPostStatus} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} />
     </div>
   )
 }

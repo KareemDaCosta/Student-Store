@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import "./ProductCard.css"
 
 
-export default function ProductCard({ product, productId, quantity, handleAddItemToCart, handleRemoveItemToCart, showDescription }) {
+export default function ProductCard({ setPostStatus, product, productId, quantity, handleAddItemToCart, handleRemoveItemToCart, showDescription }) {
     var priceText = product.price.toString();
     if(priceText.charAt[0]=='.') {
         priceText = 0+priceText;
@@ -23,12 +23,12 @@ export default function ProductCard({ product, productId, quantity, handleAddIte
     return (
         <div className="product-card">
             <div className="product-name">{product.name}</div>
-            <div className="product=price">{`${priceText}`}</div>
+            <div className="product=price">{`$${priceText}`}</div>
             {showDescription? <div className="product-description">{product.description}</div>: ""}
             <div className="Media">
                 <Link to={`/product/${product.id}`}><img src={`${product.image}`} alt={`"${product.name}"`} /></Link>
             </div>
-            <button className="add" onClick={() => {handleAddItemToCart(productId)}}>
+            <button className="add" onClick={() => {handleAddItemToCart(productId); setPostStatus(0);}}>
                 <p className="label">Add To Cart</p>
             </button>
             <button className="add" onClick={() => {handleRemoveItemToCart(productId)}}>

@@ -20,6 +20,7 @@ export default function App() {
   const [error, setError] = React.useState("");
   const [isOpen, setOpen] = React.useState(false);
   const [shoppingCart, setShoppingCart] = React.useState([]);
+  console.log('shoppingCart: ', shoppingCart);
   const [checkoutForm, setCheckoutForm] = React.useState("");
   const [shoppingPrice, setShoppingPrice] = React.useState(0);
 
@@ -101,7 +102,7 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home products={products}/>}></Route>
-            <Route path="/product/:productId" element={<ProductDetail shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} />}></Route>
+            <Route path="/product/:productId" element={<ProductDetail shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>

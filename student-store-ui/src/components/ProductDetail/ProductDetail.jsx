@@ -8,7 +8,7 @@ import axios from 'axios';
 const baseUrl = "https://codepath-store-api.herokuapp.com/store";
 
 
-export default function ProductDetail({ shoppingCart, handleAddItemToCart, handleRemoveItemFromCart}) {
+export default function ProductDetail({ shoppingCart, handleAddItemToCart, handleRemoveItemToCart}) {
 
     const params = useParams();
     const [product, setProduct] = React.useState(0); 
@@ -40,6 +40,6 @@ export default function ProductDetail({ shoppingCart, handleAddItemToCart, handl
         }
     }
     return (
-        <ProductView product={product} productId={params.productId} quantity={quantity} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} />
+        <ProductView product={product} productId={params.productId} quantity={quantity} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} />
     )
 }

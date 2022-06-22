@@ -1,13 +1,13 @@
 import * as React from "react"
-import "./ProductView.css"
 
-export default function ProductView({product, productId, quantity, handleAddItemToCart, handleRemoveItemFromCart}) {
+import "./ProductView.css"
+import ProductCard from "../ProductCard/ProductCard"
+
+export default function ProductView({product, productId, quantity, handleAddItemToCart, handleRemoveItemToCart}) {
     return (
         <div className="product-view">
-            <p>{`Product Details ${product.name}`}</p>
-            <button className={"add-button"} onClick={() => {handleAddItemToCart(productId)}}>
-                <p className="label">Add To Cart</p>
-            </button>
+            <h1 className="product-id">{`Product # ${productId}`}</h1>
+            <ProductCard product={product} productId={productId} quantity={quantity} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart} showDescription={false}/>
         </div>
     )
 }

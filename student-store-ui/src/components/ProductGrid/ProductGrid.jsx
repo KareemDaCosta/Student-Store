@@ -1,10 +1,10 @@
 import * as React from "react"
-import { Routes, Route, Link } from "react-router-dom"
 
+import ProductCard from "../ProductCard/ProductCard"
 import "./ProductGrid.css"
 
 
-export default function ProductGrid({products, handleAddItemToCart, handleRemoveItemFromCart }) {
+export default function ProductGrid({products, handleAddItemToCart, handleRemoveItemToCart }) {
     return(
         <div className="Products">
             {products.map( (item) => (
@@ -13,14 +13,4 @@ export default function ProductGrid({products, handleAddItemToCart, handleRemove
         </div>
     )
 }
-
-export function ProductCard( { showDescription, product } ) {
-    return (
-    <Link to={`/product/${product.id}`}>
-        <div className={`ProductCard ${showDescription ? "showDescription":""}`}>
-            {product.name}
-        </div>
-    </Link>
-    )
-  }
 

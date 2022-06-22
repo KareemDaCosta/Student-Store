@@ -10,14 +10,21 @@ export default function ProductCard({ setPostStatus, product, productId, quantit
         priceText = 0+priceText;
     }
     var i = 1;
+    var foundZero = false;
     for(; i < priceText.length; i++) {
         if(priceText[i]=='.') {
+            foundZero = true;
             break;
         }
     }
-    var numZerosNeeded = 2-(priceText.length-1-i);
-    for(let j = 0; j < numZerosNeeded; j++) {
-        priceText+='0';
+    if(foundZero) {
+        var numZerosNeeded = 2-(priceText.length-1-i);
+        for(let j = 0; j < numZerosNeeded; j++) {
+            priceText+='0';
+        }
+    }
+    else {
+        priceText+=".00";
     }
 
     return (

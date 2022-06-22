@@ -20,7 +20,6 @@ export default function App() {
   const [error, setError] = React.useState("");
   const [isOpen, setOpen] = React.useState(false);
   const [shoppingCart, setShoppingCart] = React.useState([]);
-  console.log('shoppingCart: ', shoppingCart);
   const [checkoutForm, setCheckoutForm] = React.useState("");
   const [shoppingPrice, setShoppingPrice] = React.useState(0);
 
@@ -40,8 +39,8 @@ export default function App() {
     setFetching(false);
   }, []);
 
-  const handleOnToggle = () => {
-    setOpen(false);
+  const handleOnToggle = (state) => {
+    setOpen(state);
   }
 
   const handleAddItemToCart = (productId) => {
@@ -101,13 +100,13 @@ export default function App() {
       <BrowserRouter>
         <main>
           <Routes>
-            <Route path="/" element={<Home products={products}/>}></Route>
+            <Route path="/" element={<Home shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="/product/:productId" element={<ProductDetail shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>
         <Navbar />
-        <Sidebar open={isOpen}/>
+        <Sidebar shoppingPrice={shoppingPrice} isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
       </BrowserRouter>
     </div>
   )

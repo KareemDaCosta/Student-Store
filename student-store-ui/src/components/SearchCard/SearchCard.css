@@ -1,0 +1,9 @@
+.search-card-img-container {
+    width: auto;
+    height: 50px;
+}
+
+.search-card-img-container img {
+    height: 100%;
+    width: auto;
+}

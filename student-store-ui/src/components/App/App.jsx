@@ -4,6 +4,7 @@ import axios from 'axios';
 import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
+import SearchBar from "../SearchBar/SearchBar"
 import "./App.css"
 import ProductDetail from "../ProductDetail/ProductDetail"
 import NotFound from "../NotFound/NotFound"
@@ -23,6 +24,8 @@ export default function App() {
   const [checkoutForm, setCheckoutForm] = React.useState({name: "", email: ""});
   const [shoppingPrice, setShoppingPrice] = React.useState(0);
   const [postStatus, setPostStatus] = React.useState(0);
+  const [searchOpen, setSearchOpen] = React.useState(false);
+  const [searchValue, setSearchValue] = React.useState("");
 
   React.useEffect(async () => {
     try {
@@ -111,6 +114,16 @@ export default function App() {
     }
   }
 
+  const handleOnSearchChange = (value) => {
+    if(value=="") {
+      setSearchOpen(false);
+    }
+    else {
+      setSearchOpen(true);
+    }
+    setSearchValue(value);
+  }
+
   if(isFetching) {
     return null;
   }
@@ -130,6 +143,7 @@ export default function App() {
           </Routes>
         </main>
         <Navbar />
+        <SearchBar products={products} searchOpen={searchOpen} setSearchOpen={setSearchOpen} searchValue={searchValue} handleOnSearchChange={handleOnSearchChange} />
         <Sidebar handleFormSubmitted={handleFormSubmitted} error={error} postStatus={postStatus} shoppingPrice={shoppingPrice} isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
       </BrowserRouter>
     </div>

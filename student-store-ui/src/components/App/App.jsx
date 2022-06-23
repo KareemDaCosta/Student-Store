@@ -7,6 +7,7 @@ import Home from "../Home/Home"
 import "./App.css"
 import ProductDetail from "../ProductDetail/ProductDetail"
 import NotFound from "../NotFound/NotFound"
+import CategoryContainer from "../CategoryContainer/CategoryContainer"
 
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom"
@@ -27,6 +28,7 @@ export default function App() {
   const [searchValue, setSearchValue] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("");
   const [categories, setCategories] = React.useState([]);
+
 
   React.useEffect(async () => {
     try {
@@ -152,7 +154,7 @@ export default function App() {
       <BrowserRouter>
         <main>
           <Routes>
-            <Route path="/" element={<Home activeCategory={activeCategory} setPostStatus={setPostStatus} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
+            <Route path="/" element={<Home activeCategory={activeCategory} categories={categories} handleOnCategoryPress={handleOnCategoryPress} setPostStatus={setPostStatus} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="/product/:productId" element={<ProductDetail setPostStatus={setPostStatus} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>

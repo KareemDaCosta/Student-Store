@@ -115,6 +115,10 @@ export default function App() {
     return null;
   }
 
+  if(products.length==0) { /* Network Error */
+    return (<h1>{error.message}</h1>)
+  }
+
   return (
     <div className="app">
       <BrowserRouter>

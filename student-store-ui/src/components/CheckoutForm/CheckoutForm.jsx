@@ -12,7 +12,7 @@ export default function CheckoutForm({handleFormSubmitted, error, postStatus, is
     }
     else if(postStatus == -1) {
         return (
-            <div className="error">{error}</div>
+            <div className="error">{error.message}</div>
         )
     }
     else {

@@ -4,7 +4,6 @@ import axios from 'axios';
 import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
-import SearchBar from "../SearchBar/SearchBar"
 import "./App.css"
 import ProductDetail from "../ProductDetail/ProductDetail"
 import NotFound from "../NotFound/NotFound"
@@ -26,15 +25,22 @@ export default function App() {
   const [postStatus, setPostStatus] = React.useState(0);
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
+  const [activeCategory, setActiveCategory] = React.useState("");
+  const [categories, setCategories] = React.useState([]);
 
   React.useEffect(async () => {
     try {
       const response = await axios.get(url);
       const result = response.data.products;
-      setProducts(result);
-      if(products.length == 0) {
+      if(result.length == 0) {
         setError("Products is empty");
       }
+      setProducts(result);
+      const categories = new Set();
+      for(let i = 0; i < result.length; i++) {
+        categories.add(result[i].category);
+      }
+      setCategories(Array.from(categories));
     }
     catch (e) {
       console.log(e);
@@ -124,6 +130,15 @@ export default function App() {
     setSearchValue(value);
   }
 
+  const handleOnCategoryPress = (value) => {
+    if(value == activeCategory) {
+      setActiveCategory("");
+    }
+    else {
+      setActiveCategory(value);
+    }
+  }
+
   if(isFetching) {
     return null;
   }
@@ -137,13 +152,12 @@ export default function App() {
       <BrowserRouter>
         <main>
           <Routes>
-            <Route path="/" element={<Home setPostStatus={setPostStatus} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
+            <Route path="/" element={<Home activeCategory={activeCategory} setPostStatus={setPostStatus} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="/product/:productId" element={<ProductDetail setPostStatus={setPostStatus} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>
-        <Navbar />
-        <SearchBar products={products} searchOpen={searchOpen} setSearchOpen={setSearchOpen} searchValue={searchValue} handleOnSearchChange={handleOnSearchChange} />
+        <Navbar activeCateogry={activeCategory} categories={categories} handleOnCategoryPress={handleOnCategoryPress} products={products} searchOpen={searchOpen} setSearchOpen={setSearchOpen} searchValue={searchValue} handleOnSearchChange={handleOnSearchChange} />
         <Sidebar handleFormSubmitted={handleFormSubmitted} error={error} postStatus={postStatus} shoppingPrice={shoppingPrice} isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
       </BrowserRouter>
     </div>

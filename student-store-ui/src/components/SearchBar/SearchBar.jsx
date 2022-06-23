@@ -10,7 +10,7 @@ export default function SearchBar({products, searchOpen, setSearchOpen, searchVa
             {searchOpen ? <ul>{products.filter(item => (
                 item.name.length >= searchValue.length && item.name.substring(0, searchValue.length).toLowerCase() == searchValue.toLowerCase()
             )).map(item => (
-                <SearchCard key={item.name} type="Item" product={item} />
+                <SearchCard key={item.name} type="Item" product={item} setSearchOpen={setSearchOpen}/>
             ))}</ul>:""}
        </div>
     )

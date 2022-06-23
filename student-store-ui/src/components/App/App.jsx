@@ -7,7 +7,6 @@ import Home from "../Home/Home"
 import "./App.css"
 import ProductDetail from "../ProductDetail/ProductDetail"
 import NotFound from "../NotFound/NotFound"
-import CategoryContainer from "../CategoryContainer/CategoryContainer"
 
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom"
@@ -28,6 +27,7 @@ export default function App() {
   const [searchValue, setSearchValue] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("");
   const [categories, setCategories] = React.useState([]);
+  const [receipts, setReceipts] = React.useState([])
 
 
   React.useEffect(async () => {
@@ -96,6 +96,9 @@ export default function App() {
   }
 
   const handleFormSubmitted = () => {
+    if(shoppingCart.length > 0) {
+      setReceipts([...receipts, {shoppingCart: shoppingCart, price: shoppingPrice}]);
+    }
     setShoppingPrice(0);
     setShoppingCart([]);
     setCheckoutForm({name : "", email: ""});
@@ -146,7 +149,11 @@ export default function App() {
   }
 
   if(products.length==0) { /* Network Error */
-    return (<h1>{error.message}</h1>)
+    return (
+      <div className="error">
+        <h1 className="error-type">{error.message}</h1>
+      </div>
+    )
   }
 
   return (
@@ -160,7 +167,7 @@ export default function App() {
           </Routes>
         </main>
         <Navbar activeCateogry={activeCategory} categories={categories} handleOnCategoryPress={handleOnCategoryPress} products={products} searchOpen={searchOpen} setSearchOpen={setSearchOpen} searchValue={searchValue} handleOnSearchChange={handleOnSearchChange} />
-        <Sidebar handleFormSubmitted={handleFormSubmitted} error={error} postStatus={postStatus} shoppingPrice={shoppingPrice} isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
+        <Sidebar receipts={receipts} handleFormSubmitted={handleFormSubmitted} error={error} postStatus={postStatus} shoppingPrice={shoppingPrice} isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
       </BrowserRouter>
     </div>
   )

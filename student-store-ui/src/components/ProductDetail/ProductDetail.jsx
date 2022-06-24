@@ -22,7 +22,7 @@ export default function ProductDetail({ setPostStatus, shoppingCart, handleAddIt
           console.log(e);
           setProduct(null);
         }
-      }, []);
+      }, [params.productId]);
 
     if(product==0) {
         return (<h1 className="loading">Loading...</h1>);

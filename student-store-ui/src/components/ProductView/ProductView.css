@@ -67,3 +67,8 @@ main {
     background: #f6f6f7;
     outline: 1px solid transparent;
 }
+
+.product-view .product-card .product-quantity {
+    font-size: 22px;
+    color:#066666;
+}

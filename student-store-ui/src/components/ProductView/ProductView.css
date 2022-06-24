@@ -71,4 +71,5 @@ main {
 .product-view .product-card .product-quantity {
     font-size: 22px;
     color:#066666;
+    text-align: center;
 }

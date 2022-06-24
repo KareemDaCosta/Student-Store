@@ -10,7 +10,7 @@ export default function Navbar({ products, searchOpen, setSearchOpen, searchValu
     <nav className="navbar">
       <Logo id="logo"/>
       <SearchBar products={products} searchOpen={searchOpen} setSearchOpen={setSearchOpen} searchValue={searchValue} handleOnSearchChange={handleOnSearchChange} />
-      <Link to={`/receipts`}><button className="receipts-button">View All Receipts</button></Link>
+      <Link to={`/receipts`}><button className="receipts-button">📜 View All Receipts</button></Link>
     </nav>
   )
 }

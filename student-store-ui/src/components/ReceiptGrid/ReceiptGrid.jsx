@@ -3,6 +3,13 @@ import "./ReceiptGrid.css"
 import Receipt from "../Receipt/Receipt"
 
 export default function ReceiptGrid({ receiptSearchValue, receipts, products, setReceiptSearchValue }) {
+    if(receipts.length==0) {
+        return (
+            <div className="no-receipts">
+                <h1>You have no receipts. Get to shopping!</h1>
+            </div>
+        )
+    }
     return (
         <div className="receipt-grid-container">
             <ReceiptSearchBar receiptSearchValue={receiptSearchValue} setReceiptSearchValue={setReceiptSearchValue} />

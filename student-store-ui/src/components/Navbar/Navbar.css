@@ -1,16 +1,67 @@
 .navbar {
-    display: flex;
     position: fixed;
     top: 0px;
+    right: 0px;
     display: grid;
-    grid-template-columns: 1fr 5fr 5fr;
+    grid-template-columns: 5fr 5fr 1fr;
     background-color: #4A6666;
     width: 100%;
     height: 50px;
     z-index: 1;
-    padding-right: 50px;
+    padding-left: 60px;
 }
 
 .navbar button {
-    margin-top: 15px;
+    margin-top: 7px;
+}
+
+.navbar .logo {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    justify-self: right;
+}
+
+.navbar a {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    justify-self: right;
+}
+
+.receipts-button {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #babfc3;
+    padding: 7px 16px;
+    min-height: 36px;
+    min-width: 36px;
+    color: #202223;
+    background: #ffffff;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
+    
+
+}
+
+.receipts-button:hover {
+    background: #f6f6f7;
+    outline: 1px solid transparent;
+}
+
+@media only screen and (max-width: 480px) {
+    .navbar {
+        position: fixed;
+        grid-template-columns: 5fr 1fr;
+        grid-template-rows: 5fr 1fr;
+        padding-left: 20vw;
+    }
+    .navbar a {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+        justify-self: right;
+    }
+    
 }

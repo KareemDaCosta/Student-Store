@@ -35,12 +35,14 @@ export default function ProductCard({ setPostStatus, product, productId, quantit
             <div className="media">
                 <Link to={`/product/${product.id}`}><img src={`${product.image}`} alt={`"${product.name}"`} /></Link>
             </div>
-            <button className="add" onClick={() => {handleAddItemToCart(productId); setPostStatus(0);}}>
-                <div className="label">🛒</div>
-            </button>
-            <button className="remove" onClick={() => {handleRemoveItemToCart(productId)}}>
-                <div className="label">▼</div>
-            </button>
+            <div className="shopping-buttons">
+                <button className="add" onClick={() => {handleAddItemToCart(productId); setPostStatus(0);}}>
+                    <div className="label">🛒</div>
+                </button>
+                <button className="remove" onClick={() => {handleRemoveItemToCart(productId)}}>
+                    <div className="label">▼</div>
+                </button>
+            </div>
             <div className="product-quantity">{quantity ? quantity : ""}</div>
         </div>
     )   

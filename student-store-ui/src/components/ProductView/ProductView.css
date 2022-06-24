@@ -1,3 +1,69 @@
 .product-view {
-    margin-top: 30px
+    padding-top: 70px;
+    max-width: 600px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+
+.product-view .product-card {
+    max-width: 500px;
+}
+
+.product-view h1 {
+    color: #066666;
+}
+
+.product-view .product-card .product-name {
+    font-size: 28px;
+    color: #066666;
+}
+
+.product-view .product-card .product-price {
+    font-size: 22px;
+    color: #066666;
+}
+
+.product-view .product-card .media{
+    width: 100%;
+    height: auto;
+}
+
+.product-view .product-card .media a img {
+    width: 100%;
+    height: 100%;   
+    object-fit: cover;
+}
+
+.product-view .product-card .shopping-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.product-view .product-card .shopping-buttons .add, .product-view .product-card .shopping-buttons .remove {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #babfc3;
+    padding: 7px 20px;
+    min-height: 36px;
+    min-width: 36px;
+    color: #202223;
+    background: #ffffff;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
+    margin-bottom: 5px;
+}
+
+.product-view .product-card .add:hover, .product-view .product-card .remove:hover {
+    background: #f6f6f7;
+    outline: 1px solid transparent;
 }

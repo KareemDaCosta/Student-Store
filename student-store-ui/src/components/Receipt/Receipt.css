@@ -6,3 +6,7 @@
 .cart-product-item div {
     margin-right: 10px;
 }
+
+.receipt-grid-container .receipt {
+    background-color: #f5f5f5
+}

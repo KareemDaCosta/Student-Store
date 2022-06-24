@@ -1,0 +1,8 @@
+.cart-product-item {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cart-product-item div {
+    margin-right: 10px;
+}

@@ -8,6 +8,7 @@ import "./App.css"
 import ProductDetail from "../ProductDetail/ProductDetail"
 import NotFound from "../NotFound/NotFound"
 import Footer from "../Footer/Footer"
+import ReceiptGrid from "../ReceiptGrid/ReceiptGrid"
 
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom"
@@ -28,7 +29,8 @@ export default function App() {
   const [searchValue, setSearchValue] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("");
   const [categories, setCategories] = React.useState([]);
-  const [receipts, setReceipts] = React.useState([])
+  const [receipts, setReceipts] = React.useState([]);
+  const [receiptSearchValue, setReceiptSearchValue] = React.useState("");
 
 
   React.useEffect(async () => {
@@ -98,7 +100,7 @@ export default function App() {
 
   const handleFormSubmitted = () => {
     if(shoppingCart.length > 0) {
-      setReceipts([...receipts, {shoppingCart: shoppingCart, price: shoppingPrice}]);
+      setReceipts([...receipts, {shoppingCart: shoppingCart, price: shoppingPrice, checkoutForm: checkoutForm}]);
     }
     setShoppingPrice(0);
     setShoppingCart([]);
@@ -164,6 +166,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home activeCategory={activeCategory} categories={categories} handleOnCategoryPress={handleOnCategoryPress} setPostStatus={setPostStatus} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="/product/:productId" element={<ProductDetail setPostStatus={setPostStatus} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
+            <Route path="/receipts" element={<ReceiptGrid receiptSearchValue={receiptSearchValue} setReceiptSearchValue={setReceiptSearchValue} products={products} receipts={receipts}/>}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>

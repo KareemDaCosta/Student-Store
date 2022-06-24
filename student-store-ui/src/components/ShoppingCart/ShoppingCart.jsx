@@ -14,10 +14,12 @@ export default function ShoppingCart({shoppingPrice, isOpen, products, shoppingC
         <div className="shopping-cart">
             {shoppingCart.map( item => (
                 <div key={`${products[item.itemId - 1].name}`}>
-                    <div className="cart-product-name">
-                    {products[item.itemId - 1].name}
-                </div><div className="cart-product-quantity">
-                        Quantity: {item.quantity}
+                    <div className="cart-product-item">
+                        <div className="cart-product-name">
+                        {products[item.itemId - 1].name}
+                    </div><div className="cart-product-quantity">
+                            Quantity: {item.quantity}
+                        </div>
                     </div>
                 </div>
             ))}

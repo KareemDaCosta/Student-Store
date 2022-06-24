@@ -3,10 +3,14 @@
     position: fixed;
     top: 0px;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 5fr 5fr;
     background-color: #4A6666;
     width: 100%;
     height: 50px;
     z-index: 1;
     padding-right: 50px;
+}
+
+.navbar button {
+    margin-top: 15px;
 }

@@ -1,0 +1,14 @@
+.receipt-grid-container {
+    margin-top: 50px;
+}
+
+.receipt-grid {    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    justify-items: stretch;
+}
+
+.receipt-grid .receipt {
+    border: 1px solid #98E9EB;
+    padding: 50px;
+    padding-top: 0px;
+}

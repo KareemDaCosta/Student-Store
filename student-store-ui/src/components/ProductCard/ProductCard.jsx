@@ -36,10 +36,10 @@ export default function ProductCard({ setPostStatus, product, productId, quantit
                 <Link to={`/product/${product.id}`}><img src={`${product.image}`} alt={`"${product.name}"`} /></Link>
             </div>
             <button className="add" onClick={() => {handleAddItemToCart(productId); setPostStatus(0);}}>
-                <div className="label">Add To Cart</div>
+                <div className="label">🛒</div>
             </button>
-            <button className="add" onClick={() => {handleRemoveItemToCart(productId)}}>
-                <div className="label">Remove From Cart</div>
+            <button className="remove" onClick={() => {handleRemoveItemToCart(productId)}}>
+                <div className="label">▼</div>
             </button>
             <div className="product-quantity">{quantity ? quantity : ""}</div>
         </div>

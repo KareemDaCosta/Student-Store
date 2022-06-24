@@ -3,10 +3,10 @@
     justify-self: left;
     align-self: top;
     padding-top: 15px;
+    max-width: 200px;
 }
 
 .search-bar input {
-    min-width: 200px;
     border-radius: 15px;
     border: 1px #000 solid;
     padding: 5px 5px 5px 25px;

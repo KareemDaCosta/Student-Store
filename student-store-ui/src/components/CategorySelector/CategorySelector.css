@@ -1,0 +1,21 @@
+.category-selector {
+    margin: 5px;
+}
+
+.category-selector{
+   line-height: 42px;
+   padding: 0;
+   border: none;
+   border-radius: 15px;
+   min-width: 10vw;
+ }
+
+ .inactive {
+    background: #000;
+    color: #fff;
+ }
+
+ .category-selector:hover, .active{
+   color: #000;
+   background: transparent;
+ }

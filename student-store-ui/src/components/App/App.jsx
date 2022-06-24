@@ -7,6 +7,7 @@ import Home from "../Home/Home"
 import "./App.css"
 import ProductDetail from "../ProductDetail/ProductDetail"
 import NotFound from "../NotFound/NotFound"
+import Footer from "../Footer/Footer"
 
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom"
@@ -168,6 +169,7 @@ export default function App() {
         </main>
         <Navbar products={products} searchOpen={searchOpen} setSearchOpen={setSearchOpen} searchValue={searchValue} handleOnSearchChange={handleOnSearchChange} />
         <Sidebar receipts={receipts} handleFormSubmitted={handleFormSubmitted} error={error} postStatus={postStatus} shoppingPrice={shoppingPrice} isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
+        <Footer />
       </BrowserRouter>
     </div>
   )

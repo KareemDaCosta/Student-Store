@@ -1,4 +1,10 @@
 .logo-img {
+    width: 100%;
+}
+
+.logo {
     width: 50px;
     height: auto;
+    margin-left: 10px;
+    margin-top: 10px;
 }

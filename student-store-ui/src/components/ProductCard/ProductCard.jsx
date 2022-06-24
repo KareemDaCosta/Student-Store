@@ -30,7 +30,7 @@ export default function ProductCard({ setPostStatus, product, productId, quantit
     return (
         <div className="product-card">
             <div className="product-name">{product.name}</div>
-            <div className="product=price">{`$${priceText}`}</div>
+            <div className="product-price">{`$${priceText}`}</div>
             {showDescription? <div className="product-description">{product.description}</div>: ""}
             <div className="media">
                 <Link to={`/product/${product.id}`}><img src={`${product.image}`} alt={`"${product.name}"`} /></Link>

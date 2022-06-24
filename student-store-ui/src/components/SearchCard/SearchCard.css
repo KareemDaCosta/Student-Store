@@ -1,9 +1,23 @@
 .search-card-img-container {
-    width: auto;
+    width: 50px;
     height: 50px;
 }
 
 .search-card-img-container img {
     height: 100%;
-    width: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+.search-card {
+    display: flex;
+    flex-direction: row;
+    background-color: #F5F5F5;
+    width: 200px;
+    border: 1px solid #98E9EB;
+    align-items: center;
+}
+
+.search-card .search-card-text {
+    padding-left: 10px;
 }

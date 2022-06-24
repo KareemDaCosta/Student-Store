@@ -1,7 +1,7 @@
 import * as React from "react"
 import "./Hero.css"
 
-import imageLogo from "./hero.jpeg";
+import imageLogo from "./hero.png";
 
 export default function Hero() {
     return (

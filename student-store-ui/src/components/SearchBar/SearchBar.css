@@ -1,0 +1,18 @@
+.search-bar {
+    grid-column: 2 / span 1;
+    justify-self: left;
+    align-self: top;
+    padding-top: 15px;
+}
+
+.search-bar input {
+    min-width: 200px;
+    border-radius: 15px;
+    border: 1px #000 solid;
+    padding: 5px 5px 5px 25px;
+    z-index: 5;
+}
+
+ul {
+    padding-left: 0pt
+}

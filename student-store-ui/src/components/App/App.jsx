@@ -166,7 +166,7 @@ export default function App() {
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>
-        <Navbar activeCateogry={activeCategory} categories={categories} handleOnCategoryPress={handleOnCategoryPress} products={products} searchOpen={searchOpen} setSearchOpen={setSearchOpen} searchValue={searchValue} handleOnSearchChange={handleOnSearchChange} />
+        <Navbar products={products} searchOpen={searchOpen} setSearchOpen={setSearchOpen} searchValue={searchValue} handleOnSearchChange={handleOnSearchChange} />
         <Sidebar receipts={receipts} handleFormSubmitted={handleFormSubmitted} error={error} postStatus={postStatus} shoppingPrice={shoppingPrice} isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
       </BrowserRouter>
     </div>

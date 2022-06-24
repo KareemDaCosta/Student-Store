@@ -44,7 +44,7 @@ The following specifications were met on the Express backend and the React front
     - [x] `*` - anything else should render the `NotFound` component
   - [x] Renders the `Navbar` component on every route
   - [x] Renders the `Sidebar` component on every route
-  - [ ] Should create **at least** the following state variables:
+  - [x] Should create **at least** the following state variables:
     - [x] `products` - an array of product objects that is initially empty.
     - [x] `isFetching` - a boolean value representing whether or not the App is currently fetching the `products` from the API.
     - [x] `error` - a variable used to display a message when something goes wrong with the API requests.
@@ -61,7 +61,7 @@ The following specifications were met on the Express backend and the React front
     - [x] When the request completes successfully, it should store the `products` returned by the response in state.
     - [x] If the request does not complete successfully, or there are no `products` found in the response,
             it should create an error message and store it in the `error` state variable.
-  - [ ] The `App.jsx` component should define handler functions to be passed as props to the `Home` and `ProductDetail` components.
+  - [x] The `App.jsx` component should define handler functions to be passed as props to the `Home` and `ProductDetail` components.
     - [x] Define as many as are needed.
     - [x] At minimum, **create these five handlers**:
       - [x] The **`handleOnToggle`** function. When called...

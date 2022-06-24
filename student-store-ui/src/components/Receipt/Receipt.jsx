@@ -19,7 +19,7 @@ export default function Receipt({receipt, products, count}) {
                     </div>
                 </div>
             ))}
-            <div className="subtotal"><span className="subtotal"><span style={{fontWeight: 'bold'}}>Sub-Total: </span> </span>${receipt.price}</div>
+            <div className="subtotal"><span className="subtotal"><span style={{fontWeight: 'bold'}}>Sub-Total: </span> </span>${Math.round(receipt.price*100)/100}</div>
             <div className="total-price"><span className="Total"><span style={{fontWeight: 'bold'}}>Total: </span></span>${Math.round((receipt.price*1.0875 + Number.EPSILON) * 100) / 100}</div>
         </div>
     )

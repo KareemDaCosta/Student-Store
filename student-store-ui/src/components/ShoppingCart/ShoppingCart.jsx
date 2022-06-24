@@ -24,7 +24,7 @@ export default function ShoppingCart({shoppingPrice, isOpen, products, shoppingC
                     </div>
                 </div>
             ))}
-            <div className="subtotal"><span className="subtotal" style={{fontWeight: 'bold'}}>Sub-total: </span>${price}</div>
+            <div className="subtotal"><span className="subtotal" style={{fontWeight: 'bold'}}>Sub-total: </span>${Math.round(price*100)/100}</div>
             <div className="total-price"><span className="Total" style={{fontWeight: 'bold'}}>Total: </span>${Math.round((price*1.0875 + Number.EPSILON) * 100) / 100}</div>
         </div>
     )

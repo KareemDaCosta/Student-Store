@@ -6,6 +6,8 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 
 // Include your gif here
 
+
+
 [Website (Deployed on Vercel)](https://student-store-ui.vercel.app/)
 
 ### Application Features

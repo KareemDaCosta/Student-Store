@@ -4,7 +4,7 @@
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
-// Include your gif here
+[Demo Video](https://youtu.be/jKJ5VWxGuZc)
 
 
 
@@ -289,20 +289,20 @@ The following specifications were met on the Express backend and the React front
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I think the topics in the lab prepared me well for the assignment. React.UseEffect() and the react life cycle were the two things I felt most unprepared for and were the source of most of my bugs.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I think the project works well as it is! I wasn't able to implement the navbar stretch goal but I was able to host the website on vercel, which was not listed as a stretch goal. If I had more time I would maybe touch up the css stying a little more for the sidebar.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think the project demo went well! Everything went according to plan and I am happy with the results.
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+None
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+My intern peer, Tri, was super helpful. During a 1:1 he showed me how to use React Dev Tools to help debug which was extremely useful.

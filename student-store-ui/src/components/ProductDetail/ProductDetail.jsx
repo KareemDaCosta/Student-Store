@@ -15,6 +15,7 @@ export default function ProductDetail({ setPostStatus, shoppingCart, handleAddIt
     React.useEffect(async () => {
         try {
           const response = await axios.get(`${baseUrl}/${[params.productId]}`);
+          console.log('`${baseUrl}/${[params.productId]}`: ', `${baseUrl}/${[params.productId]}`);
           const result = response.data.product;
           setProduct(result);
         }

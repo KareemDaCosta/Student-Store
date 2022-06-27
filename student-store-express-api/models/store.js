@@ -8,28 +8,13 @@ class Store {
       return products
     }
   
-    /*static async listTransfers() {
-      // list all items in the transfers array
-      const transfers = storage.get("transfers").value()
-      return transfers
-    }
-  
-    static async fetchTransactionById(transactionId) {
+    static async fetchProductById(productId) {
       // fetch a single transaction
-      const transaction = storage
-        .get("transactions")
-        .find({ id: Number(transactionId) })
+      const product = storage
+        .get("products")
+        .find({ id: Number(productId) })
         .value()
-      return transaction
-    }
-  
-    static async fetchTransferById(transferId) {
-      // fetch a single transfer
-      const transfer = storage
-        .get("transfers")
-        .find({ id: Number(transferId) })
-        .value()
-      return transfer
+      return product;
     }
   
     static async recordTransaction(transaction) {
@@ -78,7 +63,7 @@ class Store {
       storage.get("transfers").push(newTransfer).write()
   
       return newTransfer
-    }*/
+    }
   }
   
   module.exports = Store

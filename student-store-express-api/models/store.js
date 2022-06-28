@@ -9,7 +9,6 @@ class Store {
     }
   
     static async fetchProductById(productId) {
-      // fetch a single transaction
       const product = storage
         .get("products")
         .find({ id: Number(productId) })

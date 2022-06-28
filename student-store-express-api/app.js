@@ -5,6 +5,8 @@ const cors = require("cors")
 const app = express();
 const storeRouter = require("./routes/store.js")
 
+const errors = require("./utils/errors")
+
 const bodyParser = require('body-parser')
 
 app.use(cors())
@@ -19,7 +21,7 @@ app.get('/', (req, res) => {
 
 
 app.use((req, res, next) => {
-    return next(new NotFoundError())
+    return next(new errors.NotFoundError())
 })
 
 app.use((error, req, res, next) => {

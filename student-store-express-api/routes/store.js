@@ -25,4 +25,8 @@ router.get("/:productId", async (req, res, next) => {
     }
 })
 
+router.post("/", async (req, res, next) => {
+    
+})
+
 module.exports=router;

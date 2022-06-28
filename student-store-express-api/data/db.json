@@ -145,5 +145,94 @@
       "price": 999.99
     }
   ],
-  "purchases": []
+  "purchases": [
+    {
+      "id": 1,
+      "name": "Kareem DaCosta",
+      "email": "kareemdacosta@fb.com",
+      "order": [
+        {
+          "itemId": 15,
+          "quantity": 2
+        },
+        {
+          "itemId": 10,
+          "quantity": 1
+        },
+        {
+          "itemId": 11,
+          "quantity": 1
+        }
+      ],
+      "total": "299.01",
+      "createdAt": "2022-06-28T20:14:36.248Z",
+      "receipt": "Receipt:\nMouse from 1998: 2\nAlpaca Wool Scarf: 1\nMatching Rings: 1\nSub-Total: 274.95\nTotal: 299.01"
+    },
+    {
+      "id": 2,
+      "name": "Kareem DaCosta",
+      "email": "kareemdacosta@fb.com",
+      "order": [
+        {
+          "itemId": 15,
+          "quantity": 3
+        },
+        {
+          "itemId": 10,
+          "quantity": 2
+        },
+        {
+          "itemId": 7,
+          "quantity": 1
+        },
+        {
+          "itemId": 8,
+          "quantity": 4
+        }
+      ],
+      "total": "233.67",
+      "createdAt": "2022-06-28T20:17:30.469Z",
+      "receipt": "Receipt:\nMouse from 1998: 3\nAlpaca Wool Scarf: 2\nStriped Socks: 1\nKnitted Beanie: 4\nSub-Total: 214.87\nTotal: 233.67"
+    },
+    {
+      "id": 3,
+      "name": "Kareem",
+      "email": "kdacsoccer@gmail.com",
+      "order": [
+        {
+          "itemId": 7,
+          "quantity": 2
+        },
+        {
+          "itemId": 8,
+          "quantity": 1
+        }
+      ],
+      "total": "32.59",
+      "createdAt": "2022-06-28T20:36:28.982Z",
+      "receipt": "Receipt:\nStriped Socks: 2\nKnitted Beanie: 1\nSub-Total: 29.97\nTotal: 32.59"
+    },
+    {
+      "id": 4,
+      "name": "Kareem",
+      "email": "kareemdacosta@fb.com",
+      "order": [
+        {
+          "itemId": 7,
+          "quantity": 2
+        },
+        {
+          "itemId": 8,
+          "quantity": 1
+        },
+        {
+          "itemId": 6,
+          "quantity": 1
+        }
+      ],
+      "total": "54.33",
+      "createdAt": "2022-06-28T21:10:28.140Z",
+      "receipt": "Receipt:\nStriped Socks: 2\nKnitted Beanie: 1\nBar Code Shirts: 1\nSub-Total: 49.96\nTotal: 54.33"
+    }
+  ]
 }

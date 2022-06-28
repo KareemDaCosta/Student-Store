@@ -26,9 +26,8 @@ class ModifyDatabase {
   
       const products = await Store.listProducts()
       const productId = products.length + 1
-      const postedAt = new Date().toISOString()
-  
-      const newProduct = { id: productId, postedAt, ...product }
+
+      const newProduct = { id: productId, ...product }
   
       storage.get("products").push(newProduct).write()
   

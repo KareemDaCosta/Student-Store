@@ -2,8 +2,6 @@ import * as React from "react"
 import "./ReceiptGrid.css"
 import Receipt from "../Receipt/Receipt"
 
-const url="http://localhost:3001/orders"
-
 export default function ReceiptGrid({ receiptsLoaded, getAndSetReceipts, receiptSearchValue, receipts, products, setReceiptSearchValue }) {
     React.useEffect( () => {
         getAndSetReceipts();

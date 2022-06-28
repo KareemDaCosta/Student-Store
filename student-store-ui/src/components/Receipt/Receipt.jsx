@@ -5,6 +5,7 @@ export default function Receipt({receipt, products, count}) {
     return (
         <div className="receipt">
             <h2 className="receipt-header">Receipt {count=="" ? "" : ` ${count}`}</h2>
+            {count =="" ? "":  <div className="order-date"><span style={{fontWeight: 'bold'}}>Order Date:</span> {receipt.createdAt}</div>}
             <div className="orderer-information">
                 <div className="orderer-name"><span style={{fontWeight: 'bold'}}>Name: </span>{receipt.name}</div>
                 <div className="orderer-email"><span style={{fontWeight: 'bold'}}>Email: </span>{receipt.email}</div>

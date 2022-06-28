@@ -1,6 +1,8 @@
 const express = require("express")
 const router = express.Router()
 const Store = require("../models/store")
+const { NotFoundError } = require("../utils/errors")
+
 
 router.get("/", async (req, res, next) => {
     try {
@@ -28,7 +30,6 @@ router.get("/:productId", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
     try {
       const order = req.body
-      console.log('order: ', order);
       const newOrder = await Store.recordOrder(order)
       res.status(201).json({ purchase: newOrder })
     } catch (err) {

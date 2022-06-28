@@ -8,7 +8,7 @@ class Orders {
   
     static async fetchProductById(orderId) {
       const order = storage
-        .get("purchase")
+        .get("purchases")
         .find({ id: Number(orderId) })
         .value()
       return order;

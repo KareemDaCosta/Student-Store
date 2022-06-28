@@ -26,7 +26,13 @@ router.get("/:productId", async (req, res, next) => {
 })
 
 router.post("/", async (req, res, next) => {
-    
+  try {
+    const product = req.body
+    const newProduct = await Store.recordProduct(product)
+    res.status(201).json({ product: newProduct })
+  } catch (err) {
+    next(err)
+  }
 })
 
 module.exports=router;

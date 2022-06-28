@@ -16,52 +16,28 @@ class Store {
       return product;
     }
   
-    static async recordTransaction(transaction) {
+    static async recordProduct(product) {
       // create a new transaction
   
-      if (!transaction) {
+      if (!product) {
         throw new BadRequestError(`No transaction sent.`)
       }
-      const requiredFields = ["description", "category", "amount"]
+      const requiredFields = ["name", "category", "image", "source", "description", "price"]
       requiredFields.forEach((field) => {
-        if (!transaction[field] && transaction[field] !== 0) {
+        if (!product[field] && product[field] !== 0) {
           throw new BadRequestError(`Field: "${field}" is required in transaction`)
         }
       })
   
-      const transactions = await Bank.listTransactions()
-      const transactionId = transactions.length + 1
+      const products = await Store.listProducts()
+      const productId = products.length + 1
       const postedAt = new Date().toISOString()
   
-      const newTransaction = { id: transactionId, postedAt, ...transaction }
+      const newProduct = { id: productId, postedAt, ...product }
   
-      storage.get("transactions").push(newTransaction).write()
+      storage.get("products").push(newProduct).write()
   
-      return newTransaction
-    }
-  
-    static async recordTransfer(transfer) {
-      // create a new transfer
-  
-      if (!transfer) {
-        throw new BadRequestError(`No transfer sent.`)
-      }
-      const requiredFields = ["recipientEmail", "memo", "amount"]
-      requiredFields.forEach((field) => {
-        if (!transfer[field] && transaction[field] !== 0) {
-          throw new BadRequestError(`Field: "${field}" is required in transfer`)
-        }
-      })
-  
-      const transfers = await Bank.listTransfers()
-      const transferId = transfers.length + 1
-      const postedAt = new Date().toISOString()
-  
-      const newTransfer = { id: transferId, postedAt, ...transfer }
-  
-      storage.get("transfers").push(newTransfer).write()
-  
-      return newTransfer
+      return newProduct
     }
   }
   

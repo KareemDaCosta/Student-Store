@@ -2,6 +2,8 @@ const { BadRequestError } = require("../utils/errors")
 const { storage } = require("../data/storage")
 const Orders = require("./orders");
 
+pageJump = 20;
+
 class Store {
     static async listProducts() {
       const products = storage.get("products").value();
@@ -14,6 +16,13 @@ class Store {
         .find({ id: Number(productId) })
         .value()
       return product;
+    }
+
+    static async listProductsByPage(page) {
+        const order = storage.get("products").value().filter((item, i) => (
+            i >= page*pageJump && i < (page+1)*pageJump
+        ));
+        return order;
     }
 
     static async recordOrder(order) {

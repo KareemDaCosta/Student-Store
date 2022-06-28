@@ -14,6 +14,17 @@ router.get("/", async (req, res, next) => {
     }
 })
 
+router.get("/page/:page", async (req, res, next) => {
+    try {
+        const pageNumber = req.params.page
+        const orders = await Orders.listOrdersByPage(pageNumber-1)
+        res.status(200).json({ orders })
+    }
+    catch(err) {
+        next(err)
+    }
+})
+
 router.get("/:orderId", async (req, res, next) => {
     try {
       const orderId = req.params.orderId

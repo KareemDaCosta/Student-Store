@@ -37,4 +37,15 @@ router.post("/", async (req, res, next) => {
     }
   })
 
+  router.get("/page/:page", async (req, res, next) => {
+    try {
+        const pageNumber = req.params.page
+        const orders = await Store.listProductsByPage(pageNumber-1)
+        res.status(200).json({ orders })
+    }
+    catch(err) {
+        next(err)
+    }
+})
+
 module.exports=router;

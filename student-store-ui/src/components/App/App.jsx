@@ -13,7 +13,8 @@ import ReceiptGrid from "../ReceiptGrid/ReceiptGrid"
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom"
 
-const url = "https://codepath-store-api.herokuapp.com/store";
+const url = "http://localhost:3001/store";
+const orderUrl = "http://localhost:3001/order"
 
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
   const [categories, setCategories] = React.useState([]);
   const [receipts, setReceipts] = React.useState([]);
   const [receiptSearchValue, setReceiptSearchValue] = React.useState("");
+  const [receiptsLoaded, setReceiptsLoaded] = React.useState(false);
 
 
   React.useEffect(async () => {
@@ -99,12 +101,9 @@ export default function App() {
   }
 
   const handleFormSubmitted = () => {
-    if(shoppingCart.length > 0) {
-      setReceipts([...receipts, {shoppingCart: shoppingCart, price: shoppingPrice, checkoutForm: checkoutForm}]);
-    }
+    setCheckoutForm({name : "", email: ""});
     setShoppingPrice(0);
     setShoppingCart([]);
-    setCheckoutForm({name : "", email: ""});
   }
 
   const handleOnCheckoutFormChange = (name, value) => {
@@ -116,9 +115,23 @@ export default function App() {
     }
   }
 
+  const getAndSetReceipts = async () => {
+    setReceiptsLoaded(false);
+    try {
+      const orders = await axios.get(orderUrl);
+      setReceipts(orders.data.orders);
+      setReceiptsLoaded(true);
+    }
+    catch (error) {
+      setError(error);
+      console.log(error);
+    }
+  }
+
   const handleOnSubmitCheckoutForm = async () => {
     try {
       await axios.post(url, {user: {name: checkoutForm.name, email: checkoutForm.email}, shoppingCart: shoppingCart});
+      await getAndSetReceipts();
       setPostStatus(1);
     }
     catch (error) {
@@ -166,7 +179,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home activeCategory={activeCategory} categories={categories} handleOnCategoryPress={handleOnCategoryPress} setPostStatus={setPostStatus} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
             <Route path="/product/:productId" element={<ProductDetail setPostStatus={setPostStatus} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart} />}></Route>
-            <Route path="/receipts" element={<ReceiptGrid receiptSearchValue={receiptSearchValue} setReceiptSearchValue={setReceiptSearchValue} products={products} receipts={receipts}/>}></Route>
+            <Route path="/receipts" element={<ReceiptGrid receiptsLoaded={receiptsLoaded} getAndSetReceipts={getAndSetReceipts} receiptSearchValue={receiptSearchValue} setReceiptSearchValue={setReceiptSearchValue} products={products} receipts={receipts}/>}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>

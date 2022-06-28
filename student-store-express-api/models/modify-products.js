@@ -4,7 +4,7 @@ const Store = require("./store.js")
 
 const adminPassword = "password"
 
-class ModifyDatabase {
+class ModifyProducts {
   
     static async recordProduct(product) {
       // create a new transaction
@@ -35,4 +35,4 @@ class ModifyDatabase {
     }
   }
   
-  module.exports = ModifyDatabase
+  module.exports = ModifyProducts

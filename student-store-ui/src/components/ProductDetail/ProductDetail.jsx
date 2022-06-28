@@ -5,7 +5,7 @@ import NotFound from "../NotFound/NotFound"
 import ProductView from "../ProductView/ProductView"
 
 import axios from 'axios';
-const baseUrl = "https://codepath-store-api.herokuapp.com/store";
+const baseUrl = "http://localhost:3001/store";
 
 
 export default function ProductDetail({ setPostStatus, shoppingCart, handleAddItemToCart, handleRemoveItemToCart}) {
@@ -15,7 +15,6 @@ export default function ProductDetail({ setPostStatus, shoppingCart, handleAddIt
     React.useEffect(async () => {
         try {
           const response = await axios.get(`${baseUrl}/${[params.productId]}`);
-          console.log('`${baseUrl}/${[params.productId]}`: ', `${baseUrl}/${[params.productId]}`);
           const result = response.data.product;
           setProduct(result);
         }

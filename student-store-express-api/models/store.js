@@ -1,5 +1,6 @@
 const { BadRequestError } = require("../utils/errors")
 const { storage } = require("../data/storage")
+const Orders = require("./orders");
 
 class Store {
     static async listProducts() {
@@ -13,11 +14,6 @@ class Store {
         .find({ id: Number(productId) })
         .value()
       return product;
-    }
-
-    static async listOrders() {
-        const orders = storage.get("purchases").value();
-        return orders
     }
 
     static async recordOrder(order) {
@@ -85,7 +81,7 @@ class Store {
             receipt += `${currentProduct.name}: ${cart[i]["quantity"]}\n`;
         }
 
-        const orders = await Store.listOrders()
+        const orders = await Orders.listOrders()
         const orderId = orders.length + 1;
         const createdAt = new Date().toISOString()
 

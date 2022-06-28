@@ -4,7 +4,7 @@ const morgan = require('morgan')
 const cors = require("cors")
 const app = express();
 const storeRouter = require("./routes/store.js")
-const databaseRouter = require("./routes/modify-database.js")
+const databaseRouter = require("./routes/modify-products.js")
 
 const errors = require("./utils/errors")
 

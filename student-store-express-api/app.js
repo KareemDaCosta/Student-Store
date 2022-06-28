@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const cors = require("cors")
 const app = express();
 const storeRouter = require("./routes/store.js")
+const databaseRouter = require("./routes/modify-database.js")
 
 const errors = require("./utils/errors")
 
@@ -14,6 +15,8 @@ app.use(bodyParser.json()) //allows us to send objects
 app.use(morgan('tiny')) //used for logging
 
 app.use("/store", storeRouter);
+
+app.use("/database", databaseRouter)
 
 app.get('/', (req, res) => {
     res.send({"ping": "pong"})
